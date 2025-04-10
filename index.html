@@ -2,54 +2,57 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>✨ Premium Rewards | Watch Ads & Earn</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             /* Light Theme */
             --light-bg: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
-            --light-card: rgba(255, 255, 255, 0.9);
+            --light-card: rgba(255, 255, 255, 0.95);
             --light-text: #2b2d42;
             --light-text-secondary: #6c757d;
             --light-accent: #6c5ce7;
             --light-accent-dark: #5649c0;
             --light-success: #00b894;
             --light-error: #d63031;
-            --light-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
-            --light-inset-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.1), inset -3px -3px 5px rgba(255, 255, 255, 0.7);
+            --light-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+            --light-inset-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1), inset -2px -2px 3px rgba(255, 255, 255, 0.7);
 
             /* Dark Theme */
             --dark-bg: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-            --dark-card: rgba(30, 30, 50, 0.8);
+            --dark-card: rgba(30, 30, 50, 0.95);
             --dark-text: #f8f9fa;
             --dark-text-secondary: #adb5bd;
             --dark-accent: #7b6eff;
             --dark-accent-dark: #5a4dcc;
             --dark-success: #00cec9;
             --dark-error: #ff7675;
-            --dark-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), -8px -8px 15px rgba(70, 70, 90, 0.2);
-            --dark-inset-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.3), inset -3px -3px 5px rgba(70, 70, 90, 0.2);
+            --dark-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(70, 70, 90, 0.2);
+            --dark-inset-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.3), inset -2px -2px 3px rgba(70, 70, 90, 0.2);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
             transition: background 0.4s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 16px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         body[data-theme="light"] {
@@ -79,22 +82,24 @@
         }
 
         .container {
-            max-width: 500px;
             width: 100%;
+            max-width: 420px;
             perspective: 1000px;
         }
 
         .card {
             background: var(--card);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 24px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transform-style: preserve-3d;
             overflow: hidden;
+            width: 100%;
         }
 
         .card::before {
@@ -125,13 +130,13 @@
 
         .theme-toggle {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             background: var(--card);
             color: var(--accent);
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -148,8 +153,8 @@
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 1.6rem;
+            font-weight: 700;
             margin-bottom: 12px;
             background: linear-gradient(135deg, var(--accent), var(--success));
             -webkit-background-clip: text;
@@ -157,6 +162,7 @@
             color: transparent;
             position: relative;
             display: inline-block;
+            margin-top: 8px;
         }
 
         h1::after {
@@ -165,9 +171,9 @@
             bottom: -5px;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background: linear-gradient(90deg, var(--accent), var(--success));
-            border-radius: 3px;
+            border-radius: 2px;
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease;
@@ -180,17 +186,20 @@
 
         p.subtitle {
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             font-weight: 400;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding: 0 8px;
         }
 
         .reward-card {
             background: rgba(108, 92, 231, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: var(--inset-shadow);
             position: relative;
@@ -209,25 +218,25 @@
         }
 
         .reward-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
             background: linear-gradient(135deg, var(--accent), var(--success));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         .reward-points {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
             background: linear-gradient(135deg, var(--accent), var(--success));
             -webkit-background-clip: text;
             background-clip: text;
@@ -236,22 +245,22 @@
         }
 
         .reward-label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .btn {
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             color: white;
             border: none;
-            padding: 18px 32px;
+            padding: 16px 24px;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
@@ -259,7 +268,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            margin: 8px 0;
         }
 
         .btn::before {
@@ -275,34 +285,31 @@
             z-index: -1;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
-        }
-
-        .btn:hover::before {
-            opacity: 1;
+        .btn:hover, .btn:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(108, 92, 231, 0.5);
         }
 
         .btn:active {
             transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
         }
 
         .btn i {
             transition: transform 0.3s;
+            font-size: 1.1rem;
         }
 
         .btn:hover i {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .loading {
             display: none;
-            margin: 25px auto;
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(108, 92, 231, 0.1);
+            margin: 20px auto;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(108, 92, 231, 0.1);
             border-radius: 50%;
             border-top-color: var(--accent);
             animation: spin 1s linear infinite;
@@ -312,11 +319,11 @@
         .loading::after {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 4px solid transparent;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px solid transparent;
             border-radius: 50%;
             border-top-color: var(--success);
             animation: spin 1.5s linear infinite reverse;
@@ -327,15 +334,17 @@
         }
 
         .message {
-            padding: 18px;
-            border-radius: 12px;
-            margin-top: 25px;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: 20px;
             font-weight: 500;
             display: none;
             animation: fadeIn 0.5s ease;
             text-align: left;
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border: 1px solid;
+            font-size: 0.9rem;
         }
 
         .success {
@@ -351,8 +360,8 @@
         }
 
         .message i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
         @keyframes fadeIn {
@@ -360,15 +369,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Confetti Effect */
+        /* Confetti Effect - Optimized for Mobile */
         .confetti {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background: var(--accent);
             opacity: 0;
             animation: confettiFall 3s ease-out forwards;
             z-index: 100;
+            will-change: transform, opacity;
         }
 
         @keyframes confettiFall {
@@ -379,10 +389,10 @@
         /* Progress Bar */
         .progress-container {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: rgba(108, 92, 231, 0.1);
-            border-radius: 4px;
-            margin: 20px 0;
+            border-radius: 3px;
+            margin: 16px 0;
             overflow: hidden;
             box-shadow: var(--inset-shadow);
         }
@@ -391,7 +401,7 @@
             height: 100%;
             width: 0;
             background: linear-gradient(90deg, var(--accent), var(--success));
-            border-radius: 4px;
+            border-radius: 3px;
             transition: width 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -416,16 +426,52 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
+        /* Touch Optimizations */
+        @media (hover: none) {
+            .btn:hover {
+                transform: none;
+                box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+            }
+            
+            .btn:hover i {
+                transform: none;
+            }
+            
+            h1:hover::after {
+                transform: scaleX(0);
+            }
+            
+            .theme-toggle:hover {
+                transform: none;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 360px) {
             .card {
-                padding: 30px 20px;
+                padding: 20px 16px;
+                border-radius: 16px;
             }
+            
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
-            .reward-points {
+            
+            .reward-card {
+                padding: 20px;
+            }
+            
+            .reward-icon {
                 font-size: 2.5rem;
+            }
+            
+            .reward-points {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 14px 20px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -433,7 +479,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <button class="theme-toggle" id="themeToggle">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
 
@@ -498,6 +544,51 @@
             }, 150);
         }
 
+        // Optimized confetti for mobile performance
+        function createConfetti() {
+            const card = document.querySelector('.card');
+            const colors = [
+                getComputedStyle(document.documentElement).getPropertyValue('--accent'),
+                getComputedStyle(document.documentElement).getPropertyValue('--success'),
+                '#f72585', 
+                '#7209b7',
+                '#ffbe0b'
+            ];
+            
+            // Reduced number of particles for mobile
+            const particleCount = window.innerWidth < 768 ? 80 : 120;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random position
+                confetti.style.left = Math.random() * 100 + '%';
+                
+                // Random color
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random size
+                const size = Math.random() * 8 + 4;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Random shape
+                if (Math.random() > 0.7) {
+                    confetti.style.borderRadius = '50%';
+                }
+                
+                // Random animation
+                const duration = Math.random() * 2 + 2;
+                confetti.style.animationDuration = duration + 's';
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                
+                card.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+
         adButton.addEventListener('click', function() {
             // Disable button & show loading
             adButton.disabled = true;
@@ -518,12 +609,12 @@
                         rewardMessage.innerHTML = `
                             <i class="fas fa-check-circle"></i> 
                             <div>
-                                <strong>Reward Claimed Successfully!</strong><br>
-                                +100 Premium Points added to your account balance.
+                                <strong>Reward Claimed!</strong><br>
+                                +100 Points added to your account.
                             </div>
                         `;
                         rewardMessage.style.display = 'block';
-                        adButton.innerHTML = '<i class="fas fa-gem"></i> Earn More Points';
+                        adButton.innerHTML = '<i class="fas fa-gem"></i> Earn More';
                         adButton.disabled = false;
                         
                         createConfetti();
@@ -537,7 +628,7 @@
                         <i class="fas fa-exclamation-circle"></i> 
                         <div>
                             <strong>Ad Error</strong><br>
-                            ${e.message || 'Failed to load ad. Please try again later.'}
+                            ${e.message || 'Please try again later.'}
                         </div>
                     `;
                     rewardMessage.style.display = 'block';
@@ -546,51 +637,14 @@
                 });
         });
 
-        // Enhanced Confetti Effect
-        function createConfetti() {
-            const card = document.querySelector('.card');
-            const colors = [
-                getComputedStyle(document.documentElement).getPropertyValue('--accent'),
-                getComputedStyle(document.documentElement).getPropertyValue('--success'),
-                '#f72585', 
-                '#7209b7',
-                '#ffbe0b'
-            ];
+        // Better touch feedback for mobile
+        adButton.addEventListener('touchstart', function() {
+            this.classList.add('active');
+        }, {passive: true});
 
-            const shapes = ['circle', 'square', 'triangle'];
-            
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                
-                // Random position
-                confetti.style.left = Math.random() * 100 + '%';
-                
-                // Random color
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Random size
-                const size = Math.random() * 12 + 6;
-                confetti.style.width = size + 'px';
-                confetti.style.height = size + 'px';
-                
-                // Random shape
-                if (Math.random() > 0.7) {
-                    confetti.style.borderRadius = '50%';
-                } else if (Math.random() > 0.5) {
-                    confetti.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
-                }
-                
-                // Random animation
-                const duration = Math.random() * 3 + 2;
-                confetti.style.animationDuration = duration + 's';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                
-                card.appendChild(confetti);
-
-                setTimeout(() => confetti.remove(), duration * 1000);
-            }
-        }
+        adButton.addEventListener('touchend', function() {
+            this.classList.remove('active');
+        }, {passive: true});
     </script>
 </body>
 </html>
