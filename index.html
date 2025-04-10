@@ -4,38 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Premium Rewards | Watch Ads & Earn</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             /* Light Theme */
-            --light-bg: #f8f9ff;
-            --light-card: #ffffff;
+            --light-bg: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
+            --light-card: rgba(255, 255, 255, 0.9);
             --light-text: #2b2d42;
-            --light-accent: #4361ee;
-            --light-success: #4cc9f0;
-            --light-error: #f72585;
-            --light-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --light-text-secondary: #6c757d;
+            --light-accent: #6c5ce7;
+            --light-accent-dark: #5649c0;
+            --light-success: #00b894;
+            --light-error: #d63031;
+            --light-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
+            --light-inset-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.1), inset -3px -3px 5px rgba(255, 255, 255, 0.7);
 
             /* Dark Theme */
-            --dark-bg: #0f0f1a;
-            --dark-card: #1a1a2e;
-            --dark-text: #e2e2e2;
-            --dark-accent: #5a7dff;
-            --dark-success: #6ce0ff;
-            --dark-error: #ff3d96;
-            --dark-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --dark-bg: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            --dark-card: rgba(30, 30, 50, 0.8);
+            --dark-text: #f8f9fa;
+            --dark-text-secondary: #adb5bd;
+            --dark-accent: #7b6eff;
+            --dark-accent-dark: #5a4dcc;
+            --dark-success: #00cec9;
+            --dark-error: #ff7675;
+            --dark-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), -8px -8px 15px rgba(70, 70, 90, 0.2);
+            --dark-inset-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.3), inset -3px -3px 5px rgba(70, 70, 90, 0.2);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.4s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -43,145 +49,55 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.5s ease;
+            line-height: 1.6;
         }
 
         body[data-theme="light"] {
             --bg: var(--light-bg);
             --card: var(--light-card);
             --text: var(--light-text);
+            --text-secondary: var(--light-text-secondary);
             --accent: var(--light-accent);
+            --accent-dark: var(--light-accent-dark);
             --success: var(--light-success);
             --error: var(--light-error);
             --shadow: var(--light-shadow);
+            --inset-shadow: var(--light-inset-shadow);
         }
 
         body[data-theme="dark"] {
             --bg: var(--dark-bg);
             --card: var(--dark-card);
             --text: var(--dark-text);
+            --text-secondary: var(--dark-text-secondary);
             --accent: var(--dark-accent);
+            --accent-dark: var(--dark-accent-dark);
             --success: var(--dark-success);
             --error: var(--dark-error);
             --shadow: var(--dark-shadow);
+            --inset-shadow: var(--dark-inset-shadow);
         }
 
         .container {
             max-width: 500px;
             width: 100%;
+            perspective: 1000px;
         }
 
         .card {
             background: var(--card);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 40px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            transition: transform 0.5s, box-shadow 0.5s;
-        }
-
-        .card:hover {
-            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 16px;
-            background: linear-gradient(90deg, var(--accent), var(--success));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        p.subtitle {
-            color: var(--text);
-            opacity: 0.8;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .reward-card {
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
-            border-radius: 16px;
-            padding: 25px;
-            margin: 25px 0;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: translateZ(20px);
-        }
-
-        .reward-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-        }
-
-        .reward-points {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--success);
-        }
-
-        .reward-label {
-            font-size: 1rem;
-            opacity: 0.7;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, var(--accent), var(--success));
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            position: relative;
+            transform-style: preserve-3d;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn::after {
+        .card::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -189,28 +105,221 @@
             width: 200%;
             height: 200%;
             background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.2) 50%,
-                rgba(255, 255, 255, 0) 100%
+                to bottom right,
+                rgba(108, 92, 231, 0.1) 0%,
+                rgba(0, 184, 148, 0.05) 50%,
+                rgba(108, 92, 231, 0.1) 100%
             );
             transform: rotate(30deg);
-            transition: all 0.5s;
+            z-index: -1;
+            animation: gradientFlow 15s ease infinite;
         }
 
-        .btn:hover::after {
-            left: 100%;
+        @keyframes gradientFlow {
+            0% { transform: rotate(30deg) translate(0, 0); }
+            25% { transform: rotate(30deg) translate(-5%, 5%); }
+            50% { transform: rotate(30deg) translate(5%, -5%); }
+            75% { transform: rotate(30deg) translate(-5%, 5%); }
+            100% { transform: rotate(30deg) translate(0, 0); }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            color: var(--accent);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(30deg);
+            color: var(--accent-dark);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        .reward-card {
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--inset-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reward-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(108, 92, 231, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .reward-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .reward-points {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .reward-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            padding: 18px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn i {
+            transition: transform 0.3s;
+        }
+
+        .btn:hover i {
+            transform: scale(1.2);
         }
 
         .loading {
             display: none;
-            margin: 20px auto;
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(67, 97, 238, 0.2);
+            margin: 25px auto;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(108, 92, 231, 0.1);
             border-radius: 50%;
             border-top-color: var(--accent);
             animation: spin 1s linear infinite;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 4px solid transparent;
+            border-radius: 50%;
+            border-top-color: var(--success);
+            animation: spin 1.5s linear infinite reverse;
         }
 
         @keyframes spin {
@@ -218,24 +327,32 @@
         }
 
         .message {
-            padding: 16px;
-            border-radius: 10px;
-            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 25px;
             font-weight: 500;
             display: none;
             animation: fadeIn 0.5s ease;
+            text-align: left;
+            backdrop-filter: blur(5px);
+            border: 1px solid;
         }
 
         .success {
-            background: rgba(76, 201, 240, 0.1);
-            border: 1px solid var(--success);
+            background: rgba(0, 184, 148, 0.1);
+            border-color: var(--success);
             color: var(--success);
         }
 
         .error {
-            background: rgba(247, 37, 133, 0.1);
-            border: 1px solid var(--error);
+            background: rgba(214, 48, 49, 0.1);
+            border-color: var(--error);
             color: var(--error);
+        }
+
+        .message i {
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
 
         @keyframes fadeIn {
@@ -246,16 +363,57 @@
         /* Confetti Effect */
         .confetti {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: var(--accent);
             opacity: 0;
             animation: confettiFall 3s ease-out forwards;
+            z-index: 100;
         }
 
         @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            0% { transform: translateY(-20px) rotate(0) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg) scale(0); opacity: 0; }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+            box-shadow: var(--inset-shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* Responsive */
@@ -264,7 +422,10 @@
                 padding: 30px 20px;
             }
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+            .reward-points {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -276,13 +437,17 @@
                 <i class="fas fa-moon"></i>
             </button>
 
-            <h1>Earn Premium Rewards</h1>
-            <p class="subtitle">Watch a short ad and unlock exclusive benefits</p>
+            <h1>Premium Rewards</h1>
+            <p class="subtitle">Watch a short video and unlock exclusive benefits for your account</p>
 
             <div class="reward-card">
                 <div class="reward-icon">🎁</div>
                 <div class="reward-points">+100</div>
                 <div class="reward-label">Premium Points</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
             </div>
 
             <button id="show-ad-btn" class="btn">
@@ -297,21 +462,41 @@
 
     <script src="https://ad.gigapub.tech/script?id=585"></script>
     <script>
-        // Theme Toggle
+        // Theme Toggle with Local Storage
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        let isDarkMode = true;
+        let isDarkMode = localStorage.getItem('theme') === 'dark' || 
+                        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        // Set initial theme
+        body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 
         themeToggle.addEventListener('click', () => {
             isDarkMode = !isDarkMode;
             body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-            themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         // Ad Reward System
         const adButton = document.getElementById('show-ad-btn');
         const rewardMessage = document.getElementById('reward-message');
         const loadingIndicator = document.getElementById('loading');
+        const progressBar = document.getElementById('progressBar');
+
+        // Simulate progress (in a real app, this would be tied to actual ad progress)
+        function simulateProgress() {
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                width += 5;
+                progressBar.style.width = width + '%';
+            }, 150);
+        }
 
         adButton.addEventListener('click', function() {
             // Disable button & show loading
@@ -319,6 +504,10 @@
             adButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading Ad...';
             loadingIndicator.style.display = 'block';
             rewardMessage.style.display = 'none';
+            progressBar.style.width = '0%';
+
+            // Simulate progress
+            simulateProgress();
 
             window.showGiga()
                 .then(() => {
@@ -327,23 +516,29 @@
                         loadingIndicator.style.display = 'none';
                         rewardMessage.className = 'message success';
                         rewardMessage.innerHTML = `
-                            <i class="fas fa-check-circle"></i> <strong>Reward Claimed!</strong><br>
-                            +100 Points added to your account.
+                            <i class="fas fa-check-circle"></i> 
+                            <div>
+                                <strong>Reward Claimed Successfully!</strong><br>
+                                +100 Premium Points added to your account balance.
+                            </div>
                         `;
                         rewardMessage.style.display = 'block';
-                        adButton.innerHTML = '<i class="fas fa-gem"></i> Earn More';
+                        adButton.innerHTML = '<i class="fas fa-gem"></i> Earn More Points';
                         adButton.disabled = false;
                         
                         createConfetti();
-                    }, 1500);
+                    }, 2000);
                 })
                 .catch(e => {
                     // Error
                     loadingIndicator.style.display = 'none';
                     rewardMessage.className = 'message error';
                     rewardMessage.innerHTML = `
-                        <i class="fas fa-exclamation-circle"></i> <strong>Ad Error</strong><br>
-                        ${e.message || 'Please try again later.'}
+                        <i class="fas fa-exclamation-circle"></i> 
+                        <div>
+                            <strong>Ad Error</strong><br>
+                            ${e.message || 'Failed to load ad. Please try again later.'}
+                        </div>
                     `;
                     rewardMessage.style.display = 'block';
                     adButton.innerHTML = '<i class="fas fa-redo"></i> Try Again';
@@ -351,24 +546,49 @@
                 });
         });
 
-        // Confetti Effect
+        // Enhanced Confetti Effect
         function createConfetti() {
             const card = document.querySelector('.card');
-            const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent'), 
-                           getComputedStyle(document.documentElement).getPropertyValue('--success'),
-                           '#f72585', '#7209b7'];
+            const colors = [
+                getComputedStyle(document.documentElement).getPropertyValue('--accent'),
+                getComputedStyle(document.documentElement).getPropertyValue('--success'),
+                '#f72585', 
+                '#7209b7',
+                '#ffbe0b'
+            ];
 
-            for (let i = 0; i < 100; i++) {
+            const shapes = ['circle', 'square', 'triangle'];
+            
+            for (let i = 0; i < 150; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
+                
+                // Random position
                 confetti.style.left = Math.random() * 100 + '%';
+                
+                // Random color
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random size
+                const size = Math.random() * 12 + 6;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Random shape
+                if (Math.random() > 0.7) {
+                    confetti.style.borderRadius = '50%';
+                } else if (Math.random() > 0.5) {
+                    confetti.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                }
+                
+                // Random animation
+                const duration = Math.random() * 3 + 2;
+                confetti.style.animationDuration = duration + 's';
                 confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                
                 card.appendChild(confetti);
 
-                setTimeout(() => confetti.remove(), 3000);
+                setTimeout(() => confetti.remove(), duration * 1000);
             }
         }
     </script>
